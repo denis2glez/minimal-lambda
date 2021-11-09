@@ -21,11 +21,14 @@ project on a live system.
 
 For development, you need a Unix-like environment for now. If you are running Windows, you can use
 the Windows Subsystem for Linux ([WSL](https://docs.microsoft.com/en-us/windows/wsl/install)).
-In any case, you need to install the following requirements:
 
-- [Rust](https://www.rust-lang.org/tools/install).
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html).
+- Install [Rust](https://www.rust-lang.org/tools/install).
+- Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html).
+- Have an [AWS account](https://aws.amazon.com/account).
 
+> Please note that most AWS services **have a cost**. Although the AWS Lambda free tier includes one
+> million free requests per month. See the [lambda pricing](https://aws.amazon.com/lambda/pricing)
+> for more details.
 
 ### Installing
 
@@ -49,7 +52,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ### Setup
 
 Once you have installed the required dependencies you need to decide which target you'd like to use.
-For x86 or ARM lambda functions you'll want to use `x86_64-unknown-linux-gnu` or `aarch64-unknown-linux-gnu`, respectively. In our case we will use x86, therefore we add the
+For x86 or ARM lambda functions you'll want to use `x86_64-unknown-linux-gnu` or
+`aarch64-unknown-linux-gnu`, respectively. In our case we will use x86, therefore we add the
 target
 
 ```sh
