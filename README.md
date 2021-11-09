@@ -115,13 +115,15 @@ aws lambda invoke \
     output.json
 ```
 
+### Issues
+
 If you are (un)lucky enough to get an error of the form
 
 ```sh
 /var/task/bootstrap: /lib64/libc.so.6: version `GLIBC_X.XX' not found (required by /var/task/bootstrap)
 ```
 
-don't panic, it's just that `glibc`'s version on Amazon Linux 2 is different than on your system.
+Don't panic, it's just that `glibc`'s version on Amazon Linux 2 is different than on your system.
 
 A first solution would be to compile the project statically using musl libc
 
@@ -129,4 +131,11 @@ A first solution would be to compile the project statically using musl libc
 rustup target add x86_64-unknown-linux-musl
 ```
 
-and repeat the procedure keeping in mind that the target is `x86_64-unknown-linux-musl`.
+and repeat the procedure keeping in mind that the target is `x86_64-unknown-linux-musl`. But for
+performance-sensitive code, it is currently recommended to bring an alternative high-performance
+`malloc` implementation.
+
+Alternatively, you could use Docker to build the project. Once you have Docker installed, running
+the script `scripts/build_with_docker.sh` will build the project in Docker and then copy back the
+artifacts into the standard `target` directory of your host. From here you can continue the
+procedure in the same way as if you had compiled it locally.
