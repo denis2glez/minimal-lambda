@@ -9,13 +9,13 @@
 
 ## About <a name = "about"></a>
 
-Exploring the possibilities of writing AWS Lambdas Functions on Rust.
+Exploring the possibilities of writing AWS Lambda Functions on Rust.
 
 ## Getting Started <a name = "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for
 development and testing purposes. See [Deployment](#deployment) for notes on how to deploy the
-project on a live system.
+lambda function to AWS.
 
 ### Prerequisites
 
@@ -97,11 +97,11 @@ aws lambda create-function \
 where
 
 - `function-name` denotes the name of the function we wish to create.
-- `handler` the handler is usually a reference to the corresponding handler function, but in our
+- `handler` it is usually a reference to the corresponding handler function, but in our
   case we provide the runtime.
 - `zip-file` the zip file to use.
-- `role` the role our function should assume for execution.
-- `environment` sets the environment attribute on you lambda resource.
+- `role` the role our function should use for execution.
+- `environment` sets the environment attribute on your lambda resource.
 
 ## Usage <a name = "usage"></a>
 
