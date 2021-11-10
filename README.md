@@ -19,11 +19,16 @@ lambda function to AWS.
 
 ### Prerequisites
 
-For development, you need a Unix-like environment for now. If you are running Windows, you can use
+For development, you need a Linux environment for now. Otherwise, you could try to cross-compile
+from your system to Linux, but in some cases it is not possible while in others it has various
+limitations. In this case, you can install Docker to continue.
+
+If you are running Windows, you can instead use
 the Windows Subsystem for Linux ([WSL](https://docs.microsoft.com/en-us/windows/wsl/install)).
 
 - Install [Rust](https://www.rust-lang.org/tools/install).
 - Install [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html).
+- Install [Docker](https://docs.docker.com/get-docker/) (optional).
 - Have an [AWS account](https://aws.amazon.com/account).
 
 > Please note that most AWS services **have a cost**. Although the AWS Lambda free tier includes one
@@ -33,20 +38,31 @@ the Windows Subsystem for Linux ([WSL](https://docs.microsoft.com/en-us/windows/
 ### Installing
 
 #### Arch Linux
-If you are using Arch Linux or a derivative, you could install all the development dependencies by
+If you are using Arch Linux or a derivative, you could install the development dependencies by
 running the following commands.
 ```sh
-sudo pacman -S rust aws-cli
+sudo pacman -S curl unzip rust
 ```
 
 #### Debian
 If you are using Debian or a derivative (e.g. Ubuntu, Linux Mint), it is recommended to install Rust
-using the standard installation script. You could install all the development dependencies by running
+using the standard installation script. You could install the development dependencies by running
 the following commands.
 ```sh
-sudo pacman -S curl aws-cli
+sudo apt install curl unzip
 # Install Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+While it is possible to install AWS CLI from the repositories, it is likely an older version (i.e. v1).
+In this case, it is recommended to use the
+[official installation](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
+Assuming that you are running on x86, you can install it executing
+
+```sh
+curl https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip
+unzip awscliv2.zip
+sudo ./aws/install
 ```
 
 ### Setup
